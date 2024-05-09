@@ -2,14 +2,20 @@ import { Telegraf, Context } from 'telegraf';
 import fs from 'fs';
 
 
-const BOT_TOKEN = "6938863658:AAHLLvHwcjuMuTw14Pjjc_deYBUqaAxNA-w";
+const BOT_TOKEN = process.env.BOT_TOKEN;
 const PHOTO_PATH = './public/photo.png'
 
-const bot = new Telegraf(BOT_TOKEN);
+const bot = new Telegraf(BOT_TOKEN as string);
 
 
 bot.start((ctx: Context) => {
-    ctx.reply('Welcome to Pnyx 👍');
+    ctx.reply('' +
+        'Welcome to Pnyx 👍' +
+        'Available commands:' +
+        '/help'+
+        'send me photo'+
+        'hi'
+    );
 });
 bot.help((ctx: Context) => {
     ctx.reply('How I can help you?');
